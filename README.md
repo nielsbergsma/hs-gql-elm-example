@@ -25,3 +25,10 @@ _(use a tool like DataGrip to connect to your Postgres instance)_
 cd public
 ./build.sh
 ```
+
+## Build Haskell
+```shell-script
+cabal install
+cabal build
+cabal run
+```
