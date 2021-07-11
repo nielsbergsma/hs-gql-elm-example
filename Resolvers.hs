@@ -26,7 +26,7 @@ data ResolverContext = ResolverContext P.Connection
 newContext :: P.Connection -> ResolverContext
 newContext connection = ResolverContext connection
 
-resolvePatients :: ResolverContext -> ResolverQ e IO [ S.Patient ]
+resolvePatients :: ResolverContext -> ResolverQ e IO [S.Patient]
 resolvePatients (ResolverContext db) = liftIO $ P.fetchPatients db
 
 resolvePatient ::  ResolverContext -> PatientArguments -> ResolverQ e IO (Maybe S.Patient)

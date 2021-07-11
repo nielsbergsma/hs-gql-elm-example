@@ -1,11 +1,13 @@
 # Haskell + GraphQL + Elm example
 
-## Start Postgres in a docker container
+## Setup
+
+### Start Postgres in a docker container
 ```shell-script
 docker run -p 5432:5432 -e POSTGRES_PASSWORD=secret -d postgres
 ```
 
-## Populate test data
+### Populate test data
 ```sql
 create database experiments;
 
@@ -20,13 +22,13 @@ values ('DLzG0edIlgJpl2LpPwzqAQ',' Jane','Doe', '{"id":"DLzG0edIlgJpl2LpPwzqAQ",
 ```
 _(use a tool like DataGrip to connect to your Postgres instance)_
 
-## Build Elm
+### Build Elm
 ```shell-script
 cd public
 ./build.sh
 ```
 
-## Build Haskell
+### Build Haskell
 ```shell-script
 cabal install
 cabal build
