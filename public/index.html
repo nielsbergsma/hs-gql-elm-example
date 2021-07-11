@@ -1,0 +1,34 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Haskell - Elm - GraphQL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <script src="application.js"></script>
+  <style>
+    html, body {
+      font-family: verdana;
+    }
+
+    table {
+      width: 100%;
+      border-spacing: 0;
+      border-collapse: collapse;
+    }
+
+    td, th {
+      text-align: left;
+      border-left: dashed 1px #999;
+      border-right: dashed 1px #999;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <main id="application"></main>
+  <script>
+    const app = Elm.Main.init({
+      node: document.getElementById('application')
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+scalar EmailAddress
+scalar PhoneNumber
+scalar PatientId
+scalar InsuranceCode
+
+type Patient {
+  id: PatientId!
+  person: Person!
+  insurances: [Insurance!]!
+}
+
+type Person {
+  firstName: String!
+  lastName: String!
+  phoneNumber: PhoneNumber
+  emailAddress: EmailAddress
+}
+
+type Insurance {
+  code: InsuranceCode!
+  plan: InsurancePlan!
+  isExpired: Boolean!
+}
+
+enum InsurancePlan {
+  Primary
+  Secondary
+  Tertiary
+}
+
+type Query {
+  patient(id: PatientId!): Patient
+  patients: [Patient!]!
+}

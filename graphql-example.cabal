@@ -1,0 +1,31 @@
+cabal-version:       >=1.10
+name:                graphql-example
+version:             0.1.0.0
+author:              Niels Bergsma
+maintainer:          n.bergsma@gmail.com
+build-type:          Simple
+
+
+executable graphql-example
+  main-is:             Main.hs
+  other-modules:       Schema
+                     , Resolvers
+                     , Projections
+  
+  -- ghc-options:         -O2 -Wall -Wno-missing-signatures
+
+  build-depends:       base >=4.13 && <4.14
+                     , morpheus-graphql
+                     , text
+                     , bytestring
+                     , http-types
+                     , warp
+                     , wai
+                     , wai-extra
+                     , wai-app-static
+                     , aeson
+                     , vector
+                     , hasql
+                     , hasql-th >= 0.4 && <0.5
+  -- hs-source-dirs:
+  default-language:    Haskell2010
