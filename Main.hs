@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings, DeriveAnyClass #-}
+{-# LANGUAGE OverloadedStrings #-}
 
 module Main where
 
@@ -34,7 +34,7 @@ gql db request = do
   response <- R.resolve context body
   return $ responseLBS status200 [] response
 
-  where 
+  where
     context = R.newContext db
 
 staticFile :: Application

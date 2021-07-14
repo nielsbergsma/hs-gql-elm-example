@@ -1,4 +1,4 @@
-{-# LANGUAGE DeriveAnyClass, DeriveGeneric, DuplicateRecordFields, OverloadedStrings, TypeFamilies #-}
+{-# LANGUAGE DeriveAnyClass, DeriveGeneric, DuplicateRecordFields, TypeFamilies #-}
 
 module Resolvers (ResolverContext, newContext, resolve) where
 
@@ -16,15 +16,15 @@ data Query m = Query
   , patients :: m [S.Patient]
   } deriving (Generic, GQLType)
 
-data PatientArguments = PatientArguments
-  { id :: S.PatientId 
+newtype PatientArguments = PatientArguments
+  { id :: S.PatientId
   } deriving (Generic, GQLType)
 
 -- resolvers
-data ResolverContext = ResolverContext P.Connection
+newtype ResolverContext = ResolverContext P.Connection
 
 newContext :: P.Connection -> ResolverContext
-newContext connection = ResolverContext connection
+newContext = ResolverContext
 
 resolvePatients :: ResolverContext -> ResolverQ e IO [S.Patient]
 resolvePatients (ResolverContext db) = liftIO $ P.fetchPatients db
@@ -33,11 +33,11 @@ resolvePatient ::  ResolverContext -> PatientArguments -> ResolverQ e IO (Maybe 
 resolvePatient (ResolverContext db) (PatientArguments pid) = liftIO $ P.fetchPatient db pid
 
 resolve :: ResolverContext -> ByteString -> IO ByteString
-resolve context = interpreter root 
+resolve context = interpreter root
   where
     root :: RootResolver IO () Query Undefined Undefined
     root = RootResolver
-      { queryResolver = Query 
+      { queryResolver = Query
         { patient  = resolvePatient context
         , patients = resolvePatients context
         }

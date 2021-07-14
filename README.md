@@ -34,3 +34,11 @@ cabal install
 cabal build
 cabal run
 ```
+
+
+## Resources
+
+Haskell resources:
+- Brief introduction: https://mmhaskell.com/liftoff
+- Youtube series explaining fundementals: https://www.youtube.com/channel/UC3xdLFFsqG701QAyGJIPT1g/videos
+- Reference guide: (see attached pdf)
