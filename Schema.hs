@@ -42,6 +42,15 @@ newtype PatientId = PatientId Text
 data InsurancePlan = Primary | Secondary | Tertiary
   deriving (Generic, GQLType)
 
+data NewPatient = NewPatient 
+  { firstName :: Text
+  , lastName  :: Text
+  } deriving (Show, Generic, GQLType)
+
+data NewPatientResult = NewPatientResult
+  { success :: Bool
+  } deriving (Generic, GQLType)
+
 -- scalars
 instance GQLType PatientId where
   type KIND PatientId = SCALAR

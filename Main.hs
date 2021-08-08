@@ -5,7 +5,7 @@ module Main where
 import Network.Wai (Application, Request, Response, requestMethod, pathInfo, responseLBS, strictRequestBody)
 import Network.Wai.Application.Static (staticApp, defaultFileServerSettings)
 import Network.Wai.Handler.Warp as Warp
-import Network.HTTP.Types (methodPost, status200)
+import Network.HTTP.Types (status200)
 import qualified Resolvers as R
 import qualified Projections as P
 
@@ -25,8 +25,8 @@ main = do
 -- http
 route :: P.Connection -> Application
 route db request send = case (requestMethod request, pathInfo request) of
-  (methodPost, ["api"]) -> send =<< gql db request
-  _                     -> staticFile request send
+  ("POST", ["api"]) -> send =<< gql db request
+  _                 -> staticFile request send
 
 gql :: P.Connection -> Request -> IO Response
 gql db request = do
